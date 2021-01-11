@@ -6,7 +6,7 @@
   <link href="https://whisperer-lee.github.io/atom.xml" rel="self"/>
   
   <link href="https://whisperer-lee.github.io/"/>
-  <updated>2021-01-10T11:01:13.473Z</updated>
+  <updated>2021-01-11T06:11:58.441Z</updated>
   <id>https://whisperer-lee.github.io/</id>
   
   <author>
@@ -17,23 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://whisperer-lee.github.io/2021/01/10/hello-world/"/>
-    <id>https://whisperer-lee.github.io/2021/01/10/hello-world/</id>
-    <published>2021-01-10T11:01:13.473Z</published>
-    <updated>2021-01-10T11:01:13.473Z</updated>
+    <title>Nvidia显卡驱动的安装（Ubuntu18.04）</title>
+    <link href="https://whisperer-lee.github.io/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/"/>
+    <id>https://whisperer-lee.github.io/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/</id>
+    <published>2021-01-10T18:59:26.000Z</published>
+    <updated>2021-01-11T06:11:58.441Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;1-下载所需要的Nvidia-Driver版本&quot;&gt;&lt;a href=&quot;#1-下载所需要的Nvidia-Driver版本&quot; class=&quot;headerlink&quot; title=&quot;1.下载所需要的Nvidia Driver版本&quot;&gt;&lt;/a&gt;1.下载所需要的Nvidia</summary>
         
       
     
     
     
+    <category term="Environment Configuration" scheme="https://whisperer-lee.github.io/categories/Environment-Configuration/"/>
+    
+    
+    <category term="Linux" scheme="https://whisperer-lee.github.io/tags/Linux/"/>
     
   </entry>
   
