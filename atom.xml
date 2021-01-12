@@ -6,7 +6,7 @@
   <link href="https://whisperer-lee.github.io/atom.xml" rel="self"/>
   
   <link href="https://whisperer-lee.github.io/"/>
-  <updated>2021-01-11T06:11:58.441Z</updated>
+  <updated>2021-01-12T18:17:51.718Z</updated>
   <id>https://whisperer-lee.github.io/</id>
   
   <author>
@@ -17,18 +17,18 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Nvidia显卡驱动的安装（Ubuntu18.04）</title>
-    <link href="https://whisperer-lee.github.io/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/"/>
-    <id>https://whisperer-lee.github.io/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/</id>
-    <published>2021-01-10T18:59:26.000Z</published>
-    <updated>2021-01-11T06:11:58.441Z</updated>
+    <title>Ubuntu 18.04にNvidiaを再インストール方法</title>
+    <link href="https://whisperer-lee.github.io/2021/01/13/ubuntu-18.04ninvidiawozai-insutorufang-fa/"/>
+    <id>https://whisperer-lee.github.io/2021/01/13/ubuntu-18.04ninvidiawozai-insutorufang-fa/</id>
+    <published>2021-01-12T18:17:26.000Z</published>
+    <updated>2021-01-12T18:17:51.718Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-下载所需要的Nvidia-Driver版本&quot;&gt;&lt;a href=&quot;#1-下载所需要的Nvidia-Driver版本&quot; class=&quot;headerlink&quot; title=&quot;1.下载所需要的Nvidia Driver版本&quot;&gt;&lt;/a&gt;1.下载所需要的Nvidia</summary>
+    <summary type="html">&lt;h1 id=&quot;Ubuntu-18-04にNvidiaを再インストール方法&quot;&gt;&lt;a href=&quot;#Ubuntu-18-04にNvidiaを再インストール方法&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu</summary>
         
       
     

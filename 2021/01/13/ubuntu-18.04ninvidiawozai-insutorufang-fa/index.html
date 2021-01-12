@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Nvidia显卡驱动的安装（Ubuntu18.04）, 画像処理、DNN、三次元復元、SLAM、研究者につながる道あるある">
+    <meta name="keywords" content="Ubuntu 18.04にNvidiaを再インストール方法, 画像処理、DNN、三次元復元、SLAM、研究者につながる道あるある">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Nvidia显卡驱动的安装（Ubuntu18.04） | Whisperer_Lee</title>
+    <title>Ubuntu 18.04にNvidiaを再インストール方法 | Whisperer_Lee</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -363,12 +363,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Nvidia显卡驱动的安装（Ubuntu18.04）</h1>
+                    <h1 class="description center-align post-title">Ubuntu 18.04にNvidiaを再インストール方法</h1>
                 </div>
             </div>
         </div>
@@ -509,7 +509,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>配信:&nbsp;&nbsp;
-                    2021-01-11
+                    2021-01-13
                 </div>
                 
 
@@ -533,37 +533,112 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-下载所需要的Nvidia-Driver版本"><a href="#1-下载所需要的Nvidia-Driver版本" class="headerlink" title="1.下载所需要的Nvidia Driver版本"></a>1.下载所需要的Nvidia Driver版本</h1><p>下载最近更新的驱动器的网址</p>
-<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;www.nvidia.com&#x2F;en-us&#x2F;geforce&#x2F;drivers&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>下载老版本的网址</p>
-<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;www.nvidia.co.jp&#x2F;Download&#x2F;Find.aspx?lang&#x3D;jp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="2-卸载残留的Nvidia"><a href="#2-卸载残留的Nvidia" class="headerlink" title="2.卸载残留的Nvidia"></a>2.卸载残留的Nvidia</h1><pre class="line-numbers language-none"><code class="language-none">$ sudo apt-get purge nvidia*
-$ sudo apt-get autoremove<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="3-安装g-依赖库"><a href="#3-安装g-依赖库" class="headerlink" title="3.安装g++依赖库"></a>3.安装g++依赖库</h1><pre class="line-numbers language-none"><code class="language-none">$ sudo apt-get install build-essential gcc-multilib dkms<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="4-禁用英伟达显卡"><a href="#4-禁用英伟达显卡" class="headerlink" title="4.禁用英伟达显卡"></a>4.禁用英伟达显卡</h1><pre class="line-numbers language-none"><code class="language-none">$ sudo touch &#x2F;etc&#x2F;modprobe.d&#x2F;blacklist-nouveau.conf 
-&#x2F;&#x2F;创建文件
+                <h1 id="Ubuntu-18-04にNvidiaを再インストール方法"><a href="#Ubuntu-18-04にNvidiaを再インストール方法" class="headerlink" title="Ubuntu 18.04にNvidiaを再インストール方法"></a>Ubuntu 18.04にNvidiaを再インストール方法</h1><h2 id="1．まえがき"><a href="#1．まえがき" class="headerlink" title="1．まえがき"></a>1．まえがき</h2><p>Ubuntu18.04は前のバージョンと違い、インストール直後は最新のNvidiaドライバがすでにインストール済みの状態になっているということで、特にNvidiaのバージョンに要求がないと（Pytorch、tensorflow等は特定のNvidiaのバージョンを使用しないと）、再インストールのお勧めはいたしません。</p>
+<p>この方法は、既有のNvidiaを削除し、希望するバージョンを入り替えるためです。Ubuntu 18.04、Ubuntu 16.04でテスト済みです。</p>
+<p>なお、これらの手順は一例として、参考程度にご覧ください。</p>
+<h2 id="2．Nvidiaドライバをダウンロード"><a href="#2．Nvidiaドライバをダウンロード" class="headerlink" title="2．Nvidiaドライバをダウンロード"></a>2．Nvidiaドライバをダウンロード</h2><p>Nvidiaの公式サイトで<a target="_blank" rel="noopener" href="https://www.nvidia.com/en-us/geforce/drivers/">最近更新のドライバ</a>または<a target="_blank" rel="noopener" href="https://www.nvidia.co.jp/Download/Find.aspx?lang=jp">古いバージョンのドライバ</a>をダウンロードします。</p>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/">Pytorch</a>を使用する場合は、<a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html">CUDA、Nvidiaとの対応関係</a>は以下に示します。</p>
+<table>
+<thead>
+<tr>
+<th>CUDA Toolkit</th>
+<th>Linux x86_64 Driver Version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CUDA 9.2 (9.2.88)</td>
+<td>&gt;= 396.26</td>
+</tr>
+<tr>
+<td>CUDA 9.2 (9.2.148 Update 1)</td>
+<td>&gt;= 396.37 &amp;&amp; &lt; 410.48</td>
+</tr>
+<tr>
+<td>CUDA 10.1 (10.1.105 general<br> release, and updates)</td>
+<td>&gt;= 418.39</td>
+</tr>
+<tr>
+<td>CUDA 10.2.89</td>
+<td>&gt;= 440.33</td>
+</tr>
+<tr>
+<td>CUDA 11.0.1 RC</td>
+<td>&gt;= 450.36.06</td>
+</tr>
+<tr>
+<td>CUDA 11.0.2 GA</td>
+<td>&gt;= 450.51.05</td>
+</tr>
+<tr>
+<td>CUDA 11.0.3 Update 1</td>
+<td>&gt;= 450.51.06</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/">Tensorflow</a>を使用する場合は、CPUのみとGPUサポートがあり、CPUのみなら、Nvidiaのバージョンにこだわらなくても構いません。ただ、GPUサポートを使うと、<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/source#build_the_package">ビルド構成</a>は以下のようにお勧めいたします。</p>
+<table>
+<thead>
+<tr>
+<th>バージョン</th>
+<th>cuDNN</th>
+<th>CUDA</th>
+<th>Nvidia Linux x86_64 Driver Version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tensorflow_gpu-1.13.1</td>
+<td>7.4</td>
+<td>10.0</td>
+<td>&gt;= 410.48</td>
+</tr>
+<tr>
+<td>tensorflow_gpu-1.14.0</td>
+<td>7.4</td>
+<td>10.0</td>
+<td>&gt;= 410.48</td>
+</tr>
+<tr>
+<td>tensorflow-2.0.0</td>
+<td>7.4</td>
+<td>10.0</td>
+<td>&gt;= 410.48</td>
+</tr>
+<tr>
+<td>tensorflow-2.1.0</td>
+<td>7.6</td>
+<td>10.1</td>
+<td>&gt;= 418.39 &amp;&amp; &lt; 440.33</td>
+</tr>
+</tbody></table>
+<h2 id="3．既有のドライバを削除"><a href="#3．既有のドライバを削除" class="headerlink" title="3．既有のドライバを削除"></a>3．既有のドライバを削除</h2><pre class="line-numbers language-none"><code class="language-none">$ sudo apt-get purge nvidia*　&#x2F;&#x2F;ドライバの削除
+$ sudo apt-get autoremove　
+&#x2F;&#x2F;自動にインストールされたパッケージの中の不要なものを削除<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>テストの際に、インストール直後のUbuntuなので、本人の癖として、よく<code>$ sudo apt-get autoremove</code> を使っています。そうではない場合は、この命令を慎重に使用するか省略するかをご自身の判断の上、活用してください。</p>
+<h2 id="4．インストールまでの準備"><a href="#4．インストールまでの準備" class="headerlink" title="4．インストールまでの準備"></a>4．インストールまでの準備</h2><h3 id="1．開発に必須のビルドツールをインストール"><a href="#1．開発に必須のビルドツールをインストール" class="headerlink" title="1．開発に必須のビルドツールをインストール"></a>1．開発に必須のビルドツールをインストール</h3><pre class="line-numbers language-none"><code class="language-none">$ sudo apt-get install build-essential gcc-multilib dkms<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2．Nvidiaグラフィックカードを無効に"><a href="#2．Nvidiaグラフィックカードを無効に" class="headerlink" title="2．Nvidiaグラフィックカードを無効に"></a>2．Nvidiaグラフィックカードを無効に</h3><pre class="line-numbers language-none"><code class="language-none">$ sudo touch &#x2F;etc&#x2F;modprobe.d&#x2F;blacklist-nouveau.conf 
+&#x2F;&#x2F;ファイルを作成
 
 $ sudo gedit &#x2F;etc&#x2F;modprobe.d&#x2F;blacklist-nouveau.conf 
-&#x2F;&#x2F;用gedit编辑文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输入</p>
+&#x2F;&#x2F;geditでファイルを編集<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以下のように入力</p>
 <pre class="line-numbers language-none"><code class="language-none">blacklist nouveau
 options nouveau modeset&#x3D;0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>后保存，并退出。</p>
-<h1 id="5-设置内核在加载X-server之前不加载视频驱动器"><a href="#5-设置内核在加载X-server之前不加载视频驱动器" class="headerlink" title="5.设置内核在加载X server之前不加载视频驱动器"></a>5.设置内核在加载X server之前不加载视频驱动器</h1><pre class="line-numbers language-none"><code class="language-none">$ sudo gedit &#x2F;etc&#x2F;default&#x2F;grub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在 GRUB-CMDLINE-LINUX-DEFAULT=“quiet splash“处的splash 后加nomodeset,更改之后如下：</p>
+<p>保存の後、終了。</p>
+<h3 id="3．X-serverをロードする前にビデオドライバーをロードしないようにカーネルを設定"><a href="#3．X-serverをロードする前にビデオドライバーをロードしないようにカーネルを設定" class="headerlink" title="3．X serverをロードする前にビデオドライバーをロードしないようにカーネルを設定"></a>3．X serverをロードする前にビデオドライバーをロードしないようにカーネルを設定</h3><pre class="line-numbers language-none"><code class="language-none">$ sudo gedit &#x2F;etc&#x2F;default&#x2F;grub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>GRUB-CMDLINE-LINUX-DEFAULT=“quiet splash“</code>のsplashの後ろにnomodesetを追加。変更された様子は以下に示します。</p>
 <pre class="line-numbers language-none"><code class="language-none">GRUB-CMDLINE-LINUX-DEFAULT&#x3D;“quiet splash nomodeset”<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="6-更新Ubuntu内核"><a href="#6-更新Ubuntu内核" class="headerlink" title="6.更新Ubuntu内核"></a>6.更新Ubuntu内核</h1><pre class="line-numbers language-none"><code class="language-none">$ sudo update-initramfs -u
+<h3 id="4．-Ubuntuのカーネルを更新"><a href="#4．-Ubuntuのカーネルを更新" class="headerlink" title="4． Ubuntuのカーネルを更新"></a>4． Ubuntuのカーネルを更新</h3><pre class="line-numbers language-none"><code class="language-none">$ sudo update-initramfs -u
 $ sudo update-grub2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="7-加载字体库"><a href="#7-加载字体库" class="headerlink" title="7.加载字体库"></a>7.加载字体库</h1><pre class="line-numbers language-none"><code class="language-none">$ ls &#x2F;usr&#x2F;lib&#x2F;locale
+<h3 id="5．フォントライブラリをロード"><a href="#5．フォントライブラリをロード" class="headerlink" title="5．フォントライブラリをロード"></a>5．フォントライブラリをロード</h3><p>デフォルト言語は英語でないと、フォントライブラリをロードしたほうがいいです。</p>
+<pre class="line-numbers language-none"><code class="language-none">$ ls &#x2F;usr&#x2F;lib&#x2F;locale
 $ sudo locale-gen --purge --no-archive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="8-停止图形界面（lightdm）"><a href="#8-停止图形界面（lightdm）" class="headerlink" title="8.停止图形界面（lightdm）"></a>8.停止图形界面（lightdm）</h1><pre class="line-numbers language-none"><code class="language-none">$ sudo service lightdm stop &#x2F;&#x2F;如果报错显示并未启用，则可跳过此步骤，直接在图形界面中运行<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在停止图形界面后，进入1-5任意的窗口登陆账号</p>
-<h1 id="9-安装Nvidia-Driver"><a href="#9-安装Nvidia-Driver" class="headerlink" title="9.安装Nvidia Driver"></a>9.安装Nvidia Driver</h1><pre class="line-numbers language-none"><code class="language-none">$ cd ~&#x2F;Downloads &#x2F;&#x2F;进入最开始存放下载的驱动的文件夹
-$ ls -la &#x2F;&#x2F;查看是否存在驱动文件
-$ sudo chmod +x NVIDIA-Linux-x86_64-450.57.run &#x2F;&#x2F;给文件可执行权限
-$ sudo .&#x2F;NVIDIA-Linux-x86_64-450.57.run &#x2F;&#x2F;运行驱动程序并安装（如果安装不成功，就reboot）
-$ sudo reboot &#x2F;&#x2F;重新启动<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="10-检验是否安装成功"><a href="#10-检验是否安装成功" class="headerlink" title="10.检验是否安装成功"></a>10.检验是否安装成功</h1><pre class="line-numbers language-none"><code class="language-none">nvidia-smi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="5．Nvidiaドライバのインストール"><a href="#5．Nvidiaドライバのインストール" class="headerlink" title="5．Nvidiaドライバのインストール"></a>5．Nvidiaドライバのインストール</h2><pre class="line-numbers language-none"><code class="language-none">$ cd ~&#x2F;Downloads &#x2F;&#x2F;ダウンロードされたものはほとんどDownloadsにある
+$ ls -la &#x2F;&#x2F;中身を確認する
+$ sudo chmod +x NVIDIA-Linux-x86_64-450.57.run &#x2F;&#x2F;ファイルに実行権限を与える
+$ sudo reboot &#x2F;&#x2F;再起動
+$ sudo .&#x2F;NVIDIA-Linux-x86_64-450.57.run &#x2F;&#x2F;インストール
+$ sudo reboot &#x2F;&#x2F;再起動<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="6．確認"><a href="#6．確認" class="headerlink" title="6．確認"></a>6．確認</h2><pre class="line-numbers language-none"><code class="language-none">nvidia-smi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -589,7 +664,7 @@ $ sudo reboot &#x2F;&#x2F;重新启动<span aria-hidden="true" class="line-numbe
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Whisperer-Lee.github.io/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/">https://Whisperer-Lee.github.io/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/</a>
+                    <a href="https://Whisperer-Lee.github.io/2021/01/13/ubuntu-18.04ninvidiawozai-insutorufang-fa/">https://Whisperer-Lee.github.io/2021/01/13/ubuntu-18.04ninvidiawozai-insutorufang-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -794,9 +869,9 @@ $ sudo reboot &#x2F;&#x2F;重新启动<span aria-hidden="true" class="line-numbe
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://whisperer-lee.github.io/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/';
-        this.page.identifier = '/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/';
-        this.page.title = 'Nvidia显卡驱动的安装（Ubuntu18.04）';
+        this.page.url = 'https://whisperer-lee.github.io/2021/01/13/ubuntu-18.04ninvidiawozai-insutorufang-fa/';
+        this.page.identifier = '/2021/01/13/ubuntu-18.04ninvidiawozai-insutorufang-fa/';
+        this.page.title = 'Ubuntu 18.04にNvidiaを再インストール方法';
     };
     let disqus_shortname = 'https-whisperer-lee-github-io';
 
@@ -829,24 +904,24 @@ $ sudo reboot &#x2F;&#x2F;重新启动<span aria-hidden="true" class="line-numbe
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/">
+                <a href="/2021/01/13/ubuntu-18.04ninvidiawozai-insutorufang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Nvidia显卡驱动的安装（Ubuntu18.04）">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Ubuntu 18.04にNvidiaを再インストール方法">
                         
-                        <span class="card-title">Nvidia显卡驱动的安装（Ubuntu18.04）</span>
+                        <span class="card-title">Ubuntu 18.04にNvidiaを再インストール方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Ubuntu18.04安装后，安装Nvidia驱动的方法。
+                            既有のNvidiaを削除し、希望するバージョンを入り替える方法
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-13
                             </span>
                         <span class="publish-author">
                             
@@ -879,24 +954,24 @@ $ sudo reboot &#x2F;&#x2F;重新启动<span aria-hidden="true" class="line-numbe
                 本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2021/01/11/nvidia-xian-qia-qu-dong-de-an-zhuang/">
+                <a href="/2021/01/13/ubuntu-18.04ninvidiawozai-insutorufang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Nvidia显卡驱动的安装（Ubuntu18.04）">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Ubuntu 18.04にNvidiaを再インストール方法">
                         
-                        <span class="card-title">Nvidia显卡驱动的安装（Ubuntu18.04）</span>
+                        <span class="card-title">Ubuntu 18.04にNvidiaを再インストール方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Ubuntu18.04安装后，安装Nvidia驱动的方法。
+                            既有のNvidiaを削除し、希望するバージョンを入り替える方法
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-13
                             </span>
                         <span class="publish-author">
                             
