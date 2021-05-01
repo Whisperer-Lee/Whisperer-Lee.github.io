@@ -6,7 +6,7 @@
   <link href="https://whisperer-lee.github.io/atom.xml" rel="self"/>
   
   <link href="https://whisperer-lee.github.io/"/>
-  <updated>2021-01-20T21:11:51.266Z</updated>
+  <updated>2021-05-01T06:29:24.447Z</updated>
   <id>https://whisperer-lee.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu 18.04にCUDA 10.1をインストール方法</title>
+    <link href="https://whisperer-lee.github.io/2021/05/01/ubuntu-18.04nicuda-10.1woinsutorufang-fa/"/>
+    <id>https://whisperer-lee.github.io/2021/05/01/ubuntu-18.04nicuda-10.1woinsutorufang-fa/</id>
+    <published>2021-05-01T05:40:26.000Z</published>
+    <updated>2021-05-01T06:29:24.447Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Ubuntu-18-04にCUDA-10-1をインストール方法&quot;&gt;&lt;a href=&quot;#Ubuntu-18-04にCUDA-10-1をインストール方法&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 18.04にCUDA</summary>
+        
+      
+    
+    
+    
+    <category term="Environment Configuration" scheme="https://whisperer-lee.github.io/categories/Environment-Configuration/"/>
+    
+    
+    <category term="Linux" scheme="https://whisperer-lee.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu 18.04にNvidiaを再インストール方法</title>
